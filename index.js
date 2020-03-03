@@ -59,9 +59,6 @@ function adicionarAluno(nome) {
     console.log(nome + " foi inserido na nossa lista de alunos!")
     console.log("----------------------")
     console.log(" ")
-    /*Essa função irá receber uma *string* que é nome do aluno a ser criado. 
-    E seguindo o modelo de aluno, o mesmo deverá ser inserido na lista de alunos.
-    A função deve devolver um feedback de sucesso, caso o aluno seja inserido corretamente.*/
 }
 
 function listarAlunos() {
@@ -81,7 +78,7 @@ function listarAlunos() {
             for (let y = 0; y < listaDeAlunos[i].cursos.length; y++) {
                 let curso = listaDeAlunos[i].cursos[y].nomeDoCurso
                 let data = listaDeAlunos[i].cursos[y].dataMatricula
-                console.log("Curso " + (y+1) + ": " + curso)
+                console.log("Curso " + (y + 1) + ": " + curso)
                 console.log("Data de matrícula: " + data.getDay() + "/" + data.getMonth() + "/" + data.getFullYear())
                 console.log("-//-")
             }
@@ -90,17 +87,7 @@ function listarAlunos() {
         }
         console.log("Faltas: " + listaDeAlunos[i].faltas)
         console.log("----------")
-        //let alunoListado = listaDeAlunos[i]
-        // for(let prop in alunoListado){
-        //     if(prop == nome){
-        //         console.log("nome: " + alunoListado[prop])
-        //     } else if(prop == notas){
-        //         console.log("As notas ")
-        //     }
-        // }
     }
-    /*Com essa função o usuário poderá ver todos os alunos cadastrados atualmente no sistema. 
-    Vale dizer que As informações deverão ser exibidas em um formato amigável.*/
     console.log("----------------------")
     console.log(" ")
 }
@@ -124,7 +111,6 @@ function buscarAluno(nome) {
         }
         return retorno[0]
     }
-    /* Por meio dessa função, podemos pesquisar um aluno por nome na lista de aluno. Ela deverá exibir um feedback, tanto para quando encontrar o aluno, tanto quando não encontrar. E deverá devolver um aluno em seu retorno. */
 }
 
 function matricularAluno(aluno, curso) {
@@ -144,9 +130,6 @@ function matricularAluno(aluno, curso) {
     if (!achouAluno) {
         console.log("O aluno não foi encontrado em nosso sistema.")
     }
-    /* Essa funcionalidade irá permitir, cadastrar um aluno em um curso. 
-    Essa função só poderá ser executada em um aluno já devidamente cadastrado no sistema, e deverá armazenar a data atual no momento da matricula
-    Lembre-se de exibir o feedback para o usuário. */
 }
 
 function aplicarFalta(aluno) {
@@ -161,9 +144,6 @@ function aplicarFalta(aluno) {
     if (!confereAluno) {
         console.log("Aluno não encontrado no sistema.")
     }
-    /*
-     Ao receber um aluno devidamente cadastrado em nossa lista. Você deverá incrementar uma falta ao aluno. Você deverá dar um feedback ao concluir a tarefa. Só poderá aplicar falta em aluno se o mesmo tiver matriculado em um curso.
-    */
 }
 
 function aplicarNota(aluno, nota) {
@@ -178,9 +158,6 @@ function aplicarNota(aluno, nota) {
     if (!confereAluno) {
         console.log("Aluno não encontrado no sistema.")
     }
-    /*
-     Ao receber um aluno devidamente cadastrado em nossa lista. Você deverá adicionar uma nota ao aluno na sua lista de notas. Você deverá dar um feedback ao concluir a tarefa. Só poderá aplicar nota em aluno se o mesmo tiver matriculado em um curso.
-    */
 }
 
 function aprovarAluno(aluno) {
@@ -208,17 +185,13 @@ function aprovarAluno(aluno) {
     if (!confereAluno) {
         console.log("Aluno não encontrado no sistema!")
     }
-    /* 
-    Ao receber um aluno devidamente cadastrado em nossa lista, deverá dizer se o mesmo está aprovado ou não. Os critérios de aprovação são: ter no máximo 3 faltas e média 7 em notas.
-    Só o aluno só poderá ser aprovado se o mesmo tiver matriculado em um curso.
-    */
 }
 
-adicionarAluno("Lucas")
-listarAlunos()
-buscarAluno("Jefferson")
-listarAlunos()
-matricularAluno(listaDeAlunos[0], "Full Stack")
-aplicarFalta(listaDeAlunos[3])
-aplicarNota(listaDeAlunos[2], 7)
-aprovarAluno(listaDeAlunos[2])
+// adicionarAluno("Lucas")
+// listarAlunos()
+// buscarAluno("Jefferson")
+// listarAlunos()
+// matricularAluno(listaDeAlunos[0], "Full Stack")
+// aplicarFalta(listaDeAlunos[3])
+// aplicarNota(listaDeAlunos[2], 7)
+// aprovarAluno(listaDeAlunos[2])
