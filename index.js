@@ -48,23 +48,28 @@ console.log(" ")
 
 // implementação
 function adicionarAluno(nome) {
-    let novoAluno = {
-        nome: nome,
-        notas: [],
-        cursos: [],
-        faltas: 0
+    if (typeof (nome) == 'string') {
+        let novoAluno = {
+            nome: nome,
+            notas: [],
+            cursos: [],
+            faltas: 0
+        }
+        listaDeAlunos.push(novoAluno)
+        console.log("----------------------")
+        console.log(nome + " foi inserido na nossa lista de alunos!")
+        console.log("----------------------")
+        console.log(" ")
+    } else {
+        console.log("----------------------")
+        console.log("Nome inválido!")
+        console.log("----------------------")
+        console.log(" ")
     }
-    listaDeAlunos.push(novoAluno)
-    console.log("----------------------")
-    console.log(nome + " foi inserido na nossa lista de alunos!")
-    console.log("----------------------")
-    console.log(" ")
 }
 
 function listarAlunos() {
-    console.log("----------------------")
     console.log("Lista de alunos cadastrados no nosso sistema: ")
-    console.log(" ")
     console.log(" ")
     for (let i = 0; i < listaDeAlunos.length; i++) {
         console.log("Nome: " + listaDeAlunos[i].nome)
@@ -103,10 +108,16 @@ function buscarAluno(nome) {
         }
     }
     if (alunosEncontrados == 0) {
+        console.log("----------------------")
         console.log("Não foi encontrado nenhum aluno com o nome " + nome + " em nosso sistema.")
+        console.log("----------------------")
+        console.log(" ")
     } else {
         for (let i = 0; i < ids.length; i++) {
+            console.log("----------------------")
             console.log("O aluno " + nome + " foi encontrado no nosso sistema!")
+            console.log("----------------------")
+            console.log(" ")
             retorno.push(listaDeAlunos[ids[i]])
         }
         return retorno[0]
@@ -116,20 +127,32 @@ function buscarAluno(nome) {
 function matricularAluno(aluno, curso) {
     let achouAluno = false
     let novaData = new Date();
-    for (let i = 0; i < listaDeAlunos.length; i++) {
-        if (aluno == listaDeAlunos[i]) {
-            listaDeAlunos[i].cursos.push({
-                nomeDoCurso: curso,
-                dataMatricula: novaData
-            })
-            console.log("O aluno " + aluno.nome + " foi matriculado com sucesso no curso: " + curso)
-            achouAluno = true
-            //console.log(aluno)
+    if (typeof (curso) == 'string') {
+        for (let i = 0; i < listaDeAlunos.length; i++) {
+            if (aluno == listaDeAlunos[i]) {
+                listaDeAlunos[i].cursos.push({
+                    nomeDoCurso: curso,
+                    dataMatricula: novaData
+                })
+                console.log("----------------------")
+                console.log("O aluno " + aluno.nome + " foi matriculado com sucesso no curso: " + curso)
+                console.log("----------------------")
+                console.log(" ")
+                achouAluno = true
+                //console.log(aluno)
+            }
         }
+        if (!achouAluno) {
+            console.log("----------------------")
+            console.log("O aluno não foi encontrado em nosso sistema.")
+            console.log("----------------------")
+        }
+    } else {
+        console.log("----------------------")
+        console.log("Nome de curso inválido.")
+        console.log("----------------------")
     }
-    if (!achouAluno) {
-        console.log("O aluno não foi encontrado em nosso sistema.")
-    }
+
 }
 
 function aplicarFalta(aluno) {
@@ -137,12 +160,18 @@ function aplicarFalta(aluno) {
     for (let i = 0; i < listaDeAlunos.length; i++) {
         if (aluno == listaDeAlunos[i]) {
             listaDeAlunos[i].faltas += 1
+            console.log("----------------------")
             console.log("Falta adicionada ao aluno " + aluno.nome + " com sucesso!")
+            console.log("----------------------")
+            console.log(" ")
             confereAluno = true
         }
     }
     if (!confereAluno) {
+        console.log("----------------------")
         console.log("Aluno não encontrado no sistema.")
+        console.log("----------------------")
+        console.log(" ")
     }
 }
 
@@ -151,12 +180,18 @@ function aplicarNota(aluno, nota) {
     for (let i = 0; i < listaDeAlunos.length; i++) {
         if (aluno == listaDeAlunos[i]) {
             aluno.notas.push(nota)
+            console.log("----------------------")
             console.log("Nota adicionada ao aluno: " + aluno.nome)
+            console.log("----------------------")
+            console.log(" ")
             confereAluno = true
         }
     }
     if (!confereAluno) {
+        console.log("----------------------")
         console.log("Aluno não encontrado no sistema.")
+        console.log("----------------------")
+        console.log(" ")
     }
 }
 
@@ -171,27 +206,43 @@ function aprovarAluno(aluno) {
                     totalNotas += listaDeAlunos[i].notas[y]
                 }
                 if (totalNotas / aluno.notas.length >= 7) {
+                    console.log("----------------------")
                     console.log("Aluno " + listaDeAlunos[i].nome + " aprovado!")
+                    console.log("----------------------")
+                    console.log(" ")
                 } else {
+                    console.log("----------------------")
                     console.log("Aluno " + listaDeAlunos[i].nome + " reprovado!")
+                    console.log("----------------------")
+                    console.log(" ")
                 }
             } else if (listaDeAlunos[i].faltas <= 3 && listaDeAlunos[i].notas.length == 0) {
+                console.log("----------------------")
                 console.log("Aluno " + listaDeAlunos[i].nome + " ainda não possui notas!")
+                console.log("----------------------")
+                console.log(" ")
             } else if (listaDeAlunos[i].faltas > 3) {
+                console.log("----------------------")
                 console.log("Aluno reprovado por faltas!")
+                console.log("----------------------")
+                console.log(" ")
             }
         }
     }
     if (!confereAluno) {
+        console.log("----------------------")
         console.log("Aluno não encontrado no sistema!")
+        console.log("----------------------")
+        console.log(" ")
     }
 }
 
 // adicionarAluno("Lucas")
 // listarAlunos()
 // buscarAluno("Jefferson")
+// matricularAluno(listaDeAlunos[3], "Big Data")
 // listarAlunos()
-// matricularAluno(listaDeAlunos[0], "Full Stack")
 // aplicarFalta(listaDeAlunos[3])
 // aplicarNota(listaDeAlunos[2], 7)
 // aprovarAluno(listaDeAlunos[2])
+// listarAlunos()
